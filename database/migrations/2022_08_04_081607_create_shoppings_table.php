@@ -16,6 +16,7 @@ class CreateShoppingsTable extends Migration
         Schema::create('shoppings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->date('createddate');
             $table->timestamps();
         });
     }

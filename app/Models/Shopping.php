@@ -9,7 +9,5 @@ class Shopping extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name', 'created_at'
-    ];
+    protected $fillable = ['name', 'createddate'];
 }

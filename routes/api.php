@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ShoppingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::resource('shopping', ShoppingController::class)->except(['create', 'edit']);
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/users', [UserController::class, 'index']);
 });
+
+Route::post('/users/signup', [AuthController::class, 'signup'])->name('signup');
+Route::post('/users/signin', [AuthController::class, 'signin'])->name('signin');

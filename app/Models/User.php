@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'phone',
+        'country',
+        'city',
+        'postcode',
+        'address'
     ];
 
     /**
@@ -41,4 +47,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getUsername()
+    {
+        return $this->attributes['username'];
+    }
 }
